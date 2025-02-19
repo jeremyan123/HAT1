@@ -1,0 +1,54 @@
+{% include 'menu.html' %}
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.js"></script>
+<div class="container2">
+    <div class="title">{{ catalogue[0][1] }}</div>
+    <div class="contact" style="text-align: left;">
+        <li style="font-size: 20px;"><i class="material-icons" style="font-size: 20px;">schedule</i> {{catalogue[0][7]}}</li>
+        <li style="font-size: 20px;"><i class="material-icons" style="font-size: 20px;">location_on</i> {{catalogue[0][6]}}</li>
+        <li style="font-size: 20px;"><i class="material-icons" style="font-size: 20px;">call</i> {{catalogue[0][9]}}</li>
+        <li style="font-size: 20px;"><i class="material-icons" style="font-size: 20px;">language</i> <a href="{{catalogue[0][8]}}" style="text-decoration-line: none;">{{catalogue[0][8]}}</a></li>
+    </div>
+    <div id="map"></div>
+    <div class="about"><p>{{catalogue[0][5]}}</p></div>
+</div>
+<body>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.3.1/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.3.1/mapbox-gl-directions.css" type="text/css">
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    var place = {{catalogue|tojson}}[0]
+    console.log(place[3])
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW1vbmdzdGVyciIsImEiOiJjbTcwYWpsZW0wZWg0MmtwaXYwMGdkdjhxIn0.vCpwTqnsJH7xgwHeANnT0g';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [place[3], place[4]],
+        zoom: 11		
+    });
+    const marker = new mapboxgl.Marker({ color: 'red'})
+        .setLngLat([place[3], place[4]])
+        .addTo(map);
+        
+</script>

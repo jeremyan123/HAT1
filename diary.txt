@@ -1,0 +1,28 @@
+28/11/2024
+  Created Repositry
+  Created Templates directory
+  Created index.html, login.html, signup.html
+  Created app.py
+  Created directory_structure.txt
+  Created Test.db
+
+11/2/2025
+  Created style.css
+  Created menu.html, about.html
+  Added navbar to css
+  Added routing to index, login, signup and about pages
+  Styled Signup.html in style.css
+  Styled login.html in style.css
+  created catalogue table 
+  created reviews table
+  created routing to a temporary pages that handles posts to data.db (postplace.html, postreview.html)
+  implemented post feature in postplace.html
+  create a grid of categories to index.html
+  Styled index.html
+
+11/3/2025
+  Create place.html - template for places 
+  Created interactive map in place.html for testing
+  Styled place.html
+  Connected database to place.html 
+  

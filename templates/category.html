@@ -1,0 +1,9 @@
+{% include "menu.html" %}
+<p style="width: 100%; text-align: center; font-size: 50px;">{{ category }}</p>
+<form action="./place.html" method = "POST" class="container">
+    {% for place in catalogue %}
+        {% if place[2]==category %}
+            <div><input type="submit" name="button" value={{place[0]}}><p class="text">{{place[1]}}</p></input></div>
+        {% endif %}
+    {% endfor %}
+</div>
