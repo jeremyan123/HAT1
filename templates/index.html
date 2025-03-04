@@ -1,8 +1,21 @@
 {% include "menu.html" %}
-<p style="width: 100%; text-align: center; font-size: 50px;">CATEGORIES</p>
-<form action="./category.html" method = "POST" class="container">
-    <div><input type="submit" name="button" value="category1"><p class="text">CATEGORY ONE</p></input></div>
-    <div><input type="submit" name="button" value="category2"><p class="text">CATEGORY TWO</p></input></div>
-    <div><input type="submit" name="button" value="category3"><p class="text">CATEGORY THREE</p></input></div>
-    <div><input type="submit" name="button" value="category4"><p class="text">CATEGORY FOUR</p></input></div>
-</div>
+{% if view=="category" %}
+    <p style="width: 100%; text-align: center; font-size: 2.5vw;">CUISINES</p>
+    <div class="container">
+        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Korean')}}" class="text">KOREAN</a></div>
+        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Italian')}}" class="text">ITALIAN</a></div>
+        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Three')}}" class="text">THREE</a></div>
+        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Four')}}" class="text">FOUR</a></div>
+    </div>
+{%elif view=="catalogue"%}
+    <div class="catalogue">
+        {% for i in catalogue %}
+            <p>{{i}}</p>
+        {%endfor%}
+    </div>
+{%else%}
+    <div class="viewselect">
+        <a href="{{url_for('home', view='category')}}">Cuisines</a>
+        <a href="{{url_for('home', view='catalogue')}}">View All</a>
+    </div>
+{%endif%}

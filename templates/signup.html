@@ -7,5 +7,8 @@
     <p><input type = "text" name = "username" class="username" placeholder=""/></p>
     <p>Password</p>
     <p><input type = "password" name = "password" class="password" placeholder=""/></p>
+    {% if error %}
+        <p style="color: #ff0000; text-align: center;">{{error}}</p>
+    {%endif%}
     <p><input type = "submit" value = "CREATE ACCOUNT" name="button" class="bt1"/></p>
 </form>

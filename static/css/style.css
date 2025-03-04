@@ -11,33 +11,31 @@ ul {
     padding: 0;
     border-style: solid;
     border-width: 2px;
-    border-color: #777;
+    border-color: #997;
     border-left: none;
     border-right: none;
     width: 100%;
-    background-color:linen;
+    background-color:#080011;
+    height: 9vh;
 }
 
 ul > li {
-    right: 10px;
+    right: 1vw;
     position: relative;
     display: block;
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left:1px;
-    font-size: 25px;
-    width: 100px;
+    padding-top: 0.75vw;
+    padding-bottom: 0.75vw;
+    padding-left:2vw;
 }
 
 ul > li a {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
     position: relative;
     display: block;
     text-align: center;
-    background-color:linen;
-    font-size: 25px;
+    font-size: 1.5vw;
     text-decoration: none;
     color: #997;
 
@@ -50,52 +48,50 @@ ul > li a:hover {
     animation-duration: 0.2s;
 }
 
-ul > li:first-child {
-    width: 150px;
-}
 
 .form {
     margin: auto;
     position: relative;
-    width: 800px;
+    width: 40vw;
     
 }
 .form p:first-child {
-    margin-top: 175px;
-    font-size: 25px;
+    margin-top: 8vw;
+    font-size: 1vw;
     font-weight:500;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 2.5vw;
 }
 .form p {
-    margin-top: 30px;
+    margin-top: 1.5vw;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 26vw;
+    font-size: 0.8vw;
     font-weight: bold;
 }
 
 .form p input {
-    margin-top: -25px;
+    margin-top: -1.25vw;
     border-color: #ccc;
     border-radius: 2px;
     border-style: solid;
     border-width: 1px;
-    height: 50px;
-    width: 500px;
-    font-size: 16px;
-    text-indent: 20px;
+    height: 2.5vw;
+    width: 26vw;
+    font-size: 0.8vw;
+    text-indent: 1vw;
 }
 
 .form p:last-child input {
-    margin-top: 50px;
+    margin-top: 2.5vw;
     text-indent: 0px;
     color: #777;
     background-color: #fff;
     border-color: #fff;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
+    font-size: 1.25vw;
 }
 
 .form p:last-child input:hover {
@@ -108,22 +104,28 @@ ul > li:first-child {
 .container {
     display: grid;
     grid-template-columns: auto auto;
-    padding: 10px;
+    padding: 0.5vw;
     justify-content: center;
   }
 .container > div {
+    overflow: hidden;
     position: relative;
-    border: 2px solid #ccc;
+    border: 1px solid #8a8a7e;
     border-radius: 5px;
-    padding: 10px;
-    margin: 50px;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    height: 250px;
-    width: 700px;
-    font-size: 30px;
+    margin: 2vw;
+    margin-bottom: 2vw;
+    height: 30vh;
+    width: 35vw;
     transition: box-shadow 0.3s ease;
   }
+
+.container > div > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 30%;
+}
 
   .container >div:first-child:hover, .container >div:nth-child(3):hover {
     box-shadow: -15px 15px 5px rgba(216, 216, 216, 0.5);
@@ -144,40 +146,29 @@ ul > li:first-child {
     margin-top: 0px;
 }
 
-.container > div > input {
-    margin: 0;
-    position: absolute;
-    border: none;
-    opacity: 0;
-    width: 100%;
-    height: 34px;
-    bottom: 30px;
-    left: 0px;
-}
-
-.container > div > p {
+.container > div > a {
     position: absolute;
     text-decoration: none;
     color: #777;
-    bottom: 0;
+    bottom: 14vh;
     width: 100%;
     text-align: center;
-    font-size: 30px;
+    font-size: 3vh;
     border-color: none;
     background-color: none;
-    z-index: -1;
+    z-index: 0;
 }
-.container > div > input:hover {cursor: pointer;}
-.container > div > input:hover ~ .text{
+
+.container > div > a:hover{
     animation-name: shift-arrows;
     animation-duration: 0.4s;
-    color: #770000;
+    color: #990000;
     cursor: pointer;
 }
-.container > div > input:hover ~ .text:after {
+.container > div > a:hover:after {
     position: relative;
     content: "\ >>";
-    color:#770000;
+    color:#990000;
     animation-name: add-arrows;
     animation-duration: 0.4s;
     left: -8px;
@@ -185,34 +176,34 @@ ul > li:first-child {
 
 .container2 {
     position: relative;
-    padding: 25px;
-    height: 800px;
-    margin: 30px;
+    padding: 1vw;
+    height: 100vh;
+    margin: 1vh;
     margin-top: 10px;
 
 }
 .container2 > div {
     background-color: #f1f1f1;
     text-align: center;
-    font-size: 30px;
-    height: 250px;
-    margin-left: 25px;
-    margin-right: 25px;
+    height: 12.5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
   }
 
 #map {
     position: absolute;
-    height: 500px; width: 500px;
-    right: 25px;
-    bottom: 50px;
+    height: 20vw; 
+    width: 20vw;
+    right: 1.25vw;
+    bottom: 12vw;
 }
 .container2 > .contact {
     background-color: #fff;
-    top: 175px;
+    top: 9vw;
     position: absolute;
-    width: 500px; 
-    height: 150px;
-    right: 25px;
+    width: 20vw; 
+    height: 7.5vw;
+    right: 1vw;
 }
 
 .container2 > .contact > li {
@@ -222,18 +213,23 @@ ul > li:first-child {
 
 .container2 > .title {
     background-color: #fff;
-    height: 100px;
-    font-size: 50px;
+    height: 5vw;
+    font-size: 2.5vw;
 }
 
 .container2 > .about {
     background: none;
     position: absolute;
-    font-size: 24px;
-    height: 100px;
-    width: 1000px;
-    top: 175px;
-    left: 250px;
+    font-size: 1vw;
+    height: 5vw;
+    width: 50vw;
+    top: 9vw;
+    left: 5vw;
+}
+
+.container2 > .about > p {
+    padding: 0;
+    margin: 0;
 }
 
 @keyframes add-arrows {
