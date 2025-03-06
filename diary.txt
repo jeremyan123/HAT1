@@ -61,3 +61,28 @@
     create a page that is rendered when the url argument "view" is given as "catalogue" (given when the user selects "View All")
     Temporarily displayed all rows of the catalogue when view=catalogue
 
+5/03/2025
+  added "cards" to catalogue, containing the restaurant's information from data.db
+  dropped columns "reviews" and "images"
+  create tables "reviews" and "images"
+
+6/03/2025
+  Added images to cards by relating the tables "images" and "catalogue"
+    (images taken from google maps)
+  Styled cards on catalogue page
+    included Ratings, Open hours and address
+  Added "view more" href button to cards
+    links to the restraunt's individual page
+  Added images to each restaurant's page by relating the image and catalogue tables.
+  Added text boxes for reviews on each restaurant's page.
+    created a grid layout to style images and reviews orderly
+  Linked reviews to each restaurant's page from reviews table in data.db
+    (reviews taken from google maps)
+  Populated more restaurants into data.db (including their respective images and reviews)
+  Added images to cuisine selection page
+    https://rp-cms.imgix.net/wp-content/uploads/AdobeStock_513646998-scaled.jpeg
+    https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/61/7b/ef/food.jpg?w=900&h=500&s=1
+    https://chatthai.com/wp-content/uploads/2022/08/cover-web-1-1024x768.jpg
+    https://assets.epicurious.com/photos/624d9590857fa7e509238b59/16:9/w_2560%2Cc_limit/RegionalChinese_HERO_033122_31320.jpg
+  Added images to restaurant selection page (same images used in catalogue)
+  Added "Filter" to the side of catalogue page (no functionallity)

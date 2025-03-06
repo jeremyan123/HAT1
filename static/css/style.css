@@ -4,16 +4,16 @@ body {
     margin: 0;
 }
 ul {
+    max-width: 99.9vw;
     justify-content: right;
     display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0.2vw;
     border-color: #997;
     border-left: none;
-    border-right: none;
     width: 100%;
     background-color:#080011;
     height: 9vh;
@@ -149,7 +149,7 @@ ul > li a:hover {
 .container > div > a {
     position: absolute;
     text-decoration: none;
-    color: #777;
+    color: #000;
     bottom: 14vh;
     width: 100%;
     text-align: center;
@@ -195,8 +195,9 @@ ul > li a:hover {
     height: 20vw; 
     width: 20vw;
     right: 1.25vw;
-    bottom: 12vw;
+    top: 18vw;
 }
+
 .container2 > .contact {
     background-color: #fff;
     top: 9vw;
@@ -230,6 +231,91 @@ ul > li a:hover {
 .container2 > .about > p {
     padding: 0;
     margin: 0;
+}
+
+.cataloguecontainer{
+    display: grid;
+    grid-template-columns: 75vw 25vw;
+}
+.catalogue {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 75vw;
+    height: 90vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 0.9vw
+}
+
+.card {
+    border: 2px solid #777;
+    border-radius: 5px;
+    width: 20vw;
+    height: 25vw;
+    margin: 2vw;
+    text-align: center;
+}
+
+.imgcontainer {
+    width: 20vw;
+    height: 13vw;
+    overflow: hidden;
+    display: flex;
+}
+
+
+.card > .imgcontainer > img {
+    width: 20.1vw;
+    height: 13.1vw;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+
+.card > a {
+    text-decoration:underline;
+    color: #777;
+    width: 100%;
+    text-align: center;
+    font-size: 1.25vw;
+}
+.card > a:hover{cursor: pointer;}
+.card > a:hover{
+    animation-name: shift-arrows;
+    animation-duration: 0.4s;
+    color: #990000;
+    cursor: pointer;
+}
+.card > a:hover:after {
+    position: relative;
+    content: "\ >>";
+    color:#990000;
+    animation-name: add-arrows;
+    animation-duration: 0.4s;
+    left: -8px;
+}
+
+.ratingslider {
+    margin-bottom: 1vw;
+    -webkit-appearance: none;
+    height: 0.5vw;
+    width: 13vw;
+    outline: none;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.ratingslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: orange;
+    border-radius: 50%;
+    border: 2px solid #000;
 }
 
 @keyframes add-arrows {

@@ -66,18 +66,18 @@ def verification():
     '''redirect to verification.html'''
     return render_template('verification.html')
 
-@app.route('/about', methods=['GET'])
-def aboutpage():
-    '''redirect to about.html'''
-    return render_template('about.html')
-
 @app.route('/place', methods=['GET'])
 def showplace():
     '''redirect to place.html'''
     query = f"SELECT * FROM catalogue WHERE place_id={request.args.get('place_id')}"
+    reviews = f"SELECT * FROM reviews WHERE review_id={request.args.get('place_id')}"
     return render_template('place.html',
                            catalogue=sqlite3.connect('database/data.db').cursor()
                            .execute(query).fetchall(),
+                            images=sqlite3.connect('database/data.db').cursor()
+                                .execute("SELECT * FROM images").fetchall(),
+                            reviews=sqlite3.connect('database/data.db').cursor()
+                                .execute(reviews).fetchall(),
                            close=sqlite3.connect('database/data.db').close())
 
 @app.route('/postplace', methods=['GET'])
@@ -92,12 +92,13 @@ def showcategory():
                            category=request.args.get("category"),
                            catalogue=sqlite3.connect('database/data.db').cursor().execute(
                                "SELECT * FROM catalogue"),
+                            images=sqlite3.connect('database/data.db').cursor()
+                                .execute("SELECT * FROM images").fetchall(),
                            close=sqlite3.connect('database/data.db').close())
 
 @app.route('/postplace', methods=['POST'])
 def postdata():
     '''get the info from the post form and update the database to include it. refresh the page'''
-    place_id = int(request.form['place_id'])
     name = request.form['name']
     category = request.form['category']
     coordx = float(request.form['coordx'])
@@ -107,13 +108,20 @@ def postdata():
     website = request.form['website']
     phone_number = request.form['phone_number']
     rating = request.form['rating']
+    review1 = request.form['review1']
+    review2 = request.form['review2']
+    image1 = request.form['image1']
+    image2 = request.form['image2']
+    image3 = request.form['image3']
     con = sqlite3.connect('database/data.db')
     cur = con.cursor()
-    cur.execute("INSERT INTO catalogue(place_id, name, category,"
+    cur.execute("INSERT INTO catalogue(name, category,"
                 "coordx, coordy, address, open_hours, website, phone_number, rating"
-                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                (place_id, name, category, coordx, coordy,
+                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (name, category, coordx, coordy,
                  address, open_hours, website, phone_number, rating))
+    cur.execute("INSERT INTO reviews(review1, review2) VALUES (?, ?)", (review1, review2))
+    cur.execute("INSERT INTO images(image1, image2, image3) VALUES (?, ?, ?)", (image1, image2, image3))
     con.commit()
     con.close()
     return render_template("postplace.html")
@@ -127,6 +135,8 @@ def home():
                                view=request.args.get("view"), 
                                catalogue=sqlite3.connect('database/data.db').cursor()
                                 .execute("SELECT * FROM catalogue").fetchall(),
+                                images=sqlite3.connect('database/data.db').cursor()
+                                .execute("SELECT * FROM images").fetchall(),
                                 close=sqlite3.connect('database/data.db').close())
     except KeyError:
         return render_template('login.html')
