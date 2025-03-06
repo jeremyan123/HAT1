@@ -1,9 +1,10 @@
 {% include "menu.html" %}
+<title>Restaurant Selection</title>
 <p style="width: 100%; text-align: center; font-size: 2.5vw;">{{ category }}</p>
 <div class="container">
     {% for place in catalogue %}
         {% if place[2]==category %}
-            <div><a class="text" href="{{url_for('showplace', place_id=place[0])}}">{{place[1]}}</a></div>
+            <div><img src='static/images/{{images[place[0]][1]}}2.png'><a class="text" href="{{url_for('showplace', place_id=place[0])}}">{{place[1]}}</a></div>
         {% endif %}
     {% endfor %}
 </div>
