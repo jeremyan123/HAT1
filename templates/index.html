@@ -1,21 +1,138 @@
 {% include "menu.html" %}
-{% if view=="category" %}
-    <p style="width: 100%; text-align: center; font-size: 2.5vw;">CUISINES</p>
-    <div class="container">
-        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Korean')}}" class="text">KOREAN</a></div>
-        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Italian')}}" class="text">ITALIAN</a></div>
-        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Three')}}" class="text">THREE</a></div>
-        <div><img src='static/images/remy.png'><a href="{{url_for('showcategory', category='Four')}}" class="text">FOUR</a></div>
-    </div>
-{%elif view=="catalogue"%}
+{%if view=="catalogue"%}
+    <title>Catalogue</title>
+    <div class="cataloguecontainer">
     <div class="catalogue">
         {% for i in catalogue %}
-            <p>{{i}}</p>
+            <div class={{i[2]}} rating={{i[9]}}>
+            <div class="card">
+            <div class="imgcontainer"><img src="static/images/{{images[i[0]][1]}}.png"></div>
+                <p style="text-align: center; font-weight: 600; font-size: 1.25vw; margin: 1vw;">{{i[1]}}</p>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                <p style="text-align: center;"><i class="material-icons" style="font-size: 1vw; color: orange; text-align: center;">
+                {% if i[9]>=0.5 %}
+                    {% if i[9]>=1.5 %}
+                        {% if i[9]>=2.5 %}
+                            {% if i[9]>=3.5 %}
+                                {% if i[9]>=4.5 %}
+                                    star_rate star_rate star_rate star_rate star_rate
+                                {%else%}
+                                    star_rate star_rate star_rate star_rate
+                                {%endif%}
+                            {%else%}
+                                star_rate star_rate star_rate
+                            {%endif%}   
+                        {%else%}
+                            star_rate star_rate
+                        {%endif%}   
+                    {%else%}
+                        star_rate 
+                    {%endif%}   
+                {%endif%}
+                </i></p>
+                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">schedule</i> {{i[6]}}</p>
+                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">location_on</i> {{i[5]}}</p>
+                <a class="viewmore" href="{{url_for('showplace', place_id=i[0])}}">VIEW MORE</a>
+
+            </div>
+            </div>
         {%endfor%}
     </div>
+    <div style="font-size: 2vw; border: 2px solid #777; border-top: none; border-bottom:none; color: #000; text-align: center; padding-top: 2vw;">
+        FILTER
+        <div style="margin-top: 3vw; text-align: left; margin-left: 4vw;"><p style="font-size: 1.5vw;  margin-bottom: -1.5vw;">CUISINES</p><br>
+            <input type="checkbox" id="check1" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Korean</label><br>
+            <input type="checkbox" id="check2" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Italian</label><br>
+            <input type="checkbox" id="check3" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Chinese</label><br>
+            <input type="checkbox" id="check4" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Thai</label><br>    
+        </div>
+        <div style="margin-top: 3vw; text-align: left; margin-left: 4vw;"><p style="font-size: 1.5vw;  margin-bottom: -1.5vw;">RATING</p><br>
+            <!-- inspired by https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816 -->
+            <input type="range" min="0" max="50" value="0" class="ratingslider" id="minrating"><label style="font-size: 1vw" id="minratingtext"> MIN: 0</label>
+            <input type="range" min="0" max="50" value="50" class="ratingslider" id="maxrating"><label style="font-size: 1vw" id="maxratingtext"> MAX: 5</label>
+    </div>
+    </div>
 {%else%}
-    <div class="viewselect">
-        <a href="{{url_for('home', view='category')}}">Cuisines</a>
-        <a href="{{url_for('home', view='catalogue')}}">View All</a>
+    <title>Cuisine Selection</title>
+    <p style="width: 100%; text-align: center; font-size: 2.5vw;">CUISINES</p>
+    <div class="container">
+        <div><img src='static/images/Korean.png'><a href="{{url_for('showcategory', category='Korean')}}" class="text">KOREAN</a></div>
+        <div><img src='static/images/Italian.png'><a href="{{url_for('showcategory', category='Italian')}}" class="text">ITALIAN</a></div>
+        <div><img src='static/images/Chinese.png'><a href="{{url_for('showcategory', category='Chinese')}}" class="text">CHINESE</a></div>
+        <div><img src='static/images/Thai.png'><a href="{{url_for('showcategory', category='Thai')}}" class="text">THAI</a></div>
     </div>
 {%endif%}
+
+
+<script>
+    document.getElementById("minrating").oninput = (f=>{
+        document.getElementById("minratingtext").innerHTML=" MIN: " + (document.getElementById("minrating").value/10);
+        [...document.querySelectorAll("[rating]")].forEach(x=>{
+            if (x.getAttribute("rating")>=document.getElementById("minrating").value/10 && x.getAttribute("rating")<=document.getElementById("maxrating").value/10) {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+            }
+        })
+    })
+    document.getElementById("maxrating").oninput = (f=>{
+        document.getElementById("maxratingtext").innerHTML=" MAX: " + (document.getElementById("maxrating").value/10);
+        [...document.querySelectorAll("[rating]")].forEach(y=>{
+            if (y.getAttribute("rating")<=document.getElementById("maxrating").value/10 && y.getAttribute("rating")>=document.getElementById("minrating").value/10) {
+                y.style.display = "block";
+            }
+            else {
+                y.style.display = "none";
+            }
+        })
+    })
+    
+
+    function updatecatalogue() {
+        if (document.getElementById("check1").checked) {
+            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+            [...document.getElementsByClassName("Korean")].forEach(i=>  {
+                i.style.display = "block";
+            })
+        }
+        else{
+            [...document.getElementsByClassName("Korean")].forEach(i=>  {
+                i.style.display = "none";
+            })
+        }
+        if (document.getElementById("check2").checked) {
+            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+            [...document.getElementsByClassName("Italian")].forEach(i=>  {
+                i.style.display = "block";
+            })
+        }
+        else{
+            [...document.getElementsByClassName("Italian")].forEach(i=>  {
+                i.style.display = "none";
+            })
+        }
+        if (document.getElementById("check3").checked) {
+            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+            [...document.getElementsByClassName("Chinese")].forEach(i=>  {
+                i.style.display = "block";
+            })
+        }
+        else{
+            [...document.getElementsByClassName("Chinese")].forEach(i=>  {
+                i.style.display = "none";
+            })
+        }
+        if (document.getElementById("check4").checked) {
+            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+            [...document.getElementsByClassName("Thai")].forEach(i=>  {
+                i.style.display = "block";
+            })
+        }
+        else{
+            [...document.getElementsByClassName("Thai")].forEach(i=>  {
+                i.style.display = "none";
+            })
+        }
+    }
+</script>
