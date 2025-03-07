@@ -1,9 +1,13 @@
-body {
+/*
+Measurements "vw" and "vh" represent "view width" and "view height" respectively and are equivalent to a % of the current resolution
+*/
+
+body { /* css affecting the entire page */
     overflow: hidden;
     font-family: Courier, serif;
     margin: 0;
 }
-ul {
+ul { /*styling the navbar*/
     max-width: 99.9vw;
     justify-content: right;
     display: flex;
@@ -19,7 +23,7 @@ ul {
     height: 9vh;
 }
 
-ul > li {
+ul > li { /*styling the elements of the navbar*/
     right: 1vw;
     position: relative;
     display: block;
@@ -29,7 +33,7 @@ ul > li {
     padding-left:2vw;
 }
 
-ul > li a {
+ul > li a { /*styling the text of the elements of the navbar*/
     padding-top: 0.5vw;
     padding-bottom: 0.5vw;
     position: relative;
@@ -41,7 +45,7 @@ ul > li a {
 
 }
 
-ul > li a:hover {
+ul > li a:hover { /*creating a hover effect when hovering over the text in the navbar*/
     color: #770000;
     animation-fill-mode: forwards;
     animation-name: wiggle;
@@ -49,20 +53,20 @@ ul > li a:hover {
 }
 
 
-.form {
+.form { /*styling all forms*/
     margin: auto;
     position: relative;
     width: 40vw;
     
 }
-.form p:first-child {
+.form p:first-child { /* setting the position of the first element in the form */
     margin-top: 8vw;
     font-size: 1vw;
     font-weight:500;
     text-align: center;
     margin-bottom: 2.5vw;
 }
-.form p {
+.form p { /* styling text elements in the form */
     margin-top: 1.5vw;
     position: relative;
     margin-left: auto;
@@ -72,7 +76,7 @@ ul > li a:hover {
     font-weight: bold;
 }
 
-.form p input {
+.form p input { /* styling the input boxes in the form */
     margin-top: -1.25vw;
     border-color: #ccc;
     border-radius: 2px;
@@ -84,7 +88,7 @@ ul > li a:hover {
     text-indent: 1vw;
 }
 
-.form p:last-child input {
+.form p:last-child input { /* styling the submit button in the form */
     margin-top: 2.5vw;
     text-indent: 0px;
     color: #777;
@@ -94,20 +98,20 @@ ul > li a:hover {
     font-size: 1.25vw;
 }
 
-.form p:last-child input:hover {
+.form p:last-child input:hover { /* adding a hover effect to the submit button */
     animation-name: wiggle;
     animation-duration: 0.1s;
     color: #770000;
 }
 
 
-.container {
+.container { /* styling the "container" class used in index.html and categories.html */
     display: grid;
     grid-template-columns: auto auto;
     padding: 0.5vw;
     justify-content: center;
   }
-.container > div {
+.container > div { /* styling the boxes in the container */
     overflow: hidden;
     position: relative;
     border: 1px solid #8a8a7e;
@@ -119,7 +123,7 @@ ul > li a:hover {
     transition: box-shadow 0.3s ease;
   }
 
-.container > div > img {
+.container > div > img { /* styling the background image of the boxes */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -127,12 +131,13 @@ ul > li a:hover {
     opacity: 30%;
 }
 
-  .container >div:first-child:hover, .container >div:nth-child(3):hover {
-    box-shadow: -15px 15px 5px rgba(216, 216, 216, 0.5);
-  }
-  .container >div:last-child:hover, .container >div:nth-child(2):hover {
-    box-shadow: 15px 15px 5px rgba(216, 216, 216, 0.5);
-  }
+/* styling the shadow effects when hovering over the boxes */
+.container >div:first-child:hover, .container >div:nth-child(3):hover {
+box-shadow: -15px 15px 5px rgba(216, 216, 216, 0.5);
+}
+.container >div:last-child:hover, .container >div:nth-child(2):hover {
+box-shadow: 15px 15px 5px rgba(216, 216, 216, 0.5);
+}
 .container > div:first-child, .container >div:nth-child(2) {
     box-shadow: 5px 5px 5px rgba(216, 216, 216, 0.5);
     margin-top: 0px;
@@ -146,7 +151,7 @@ ul > li a:hover {
     margin-top: 0px;
 }
 
-.container > div > a {
+.container > div > a { /* styling the text in the boxes */
     position: absolute;
     text-decoration: none;
     color: #000;
@@ -159,13 +164,13 @@ ul > li a:hover {
     z-index: 0;
 }
 
-.container > div > a:hover{
+.container > div > a:hover{ /* hover effect for text in boxes */
     animation-name: shift-arrows;
     animation-duration: 0.4s;
     color: #990000;
     cursor: pointer;
 }
-.container > div > a:hover:after {
+.container > div > a:hover:after { /* defining what happens after the user starts hovering over the text */
     position: relative;
     content: "\ >>";
     color:#990000;
@@ -174,7 +179,7 @@ ul > li a:hover {
     left: -8px;
 }
 
-.container2 {
+.container2 { /* styling "container2" used in place.html */
     position: relative;
     padding: 1vw;
     height: 100vh;
@@ -182,15 +187,14 @@ ul > li a:hover {
     margin-top: 10px;
 
 }
-.container2 > div {
-    background-color: #f1f1f1;
+.container2 > div { /* styling the basic properties of each div in the container*/
     text-align: center;
     height: 12.5vw;
     margin-left: 1vw;
     margin-right: 1vw;
   }
 
-#map {
+#map { /* styling the mapbox map */
     position: absolute;
     height: 20vw; 
     width: 20vw;
@@ -198,7 +202,7 @@ ul > li a:hover {
     top: 18vw;
 }
 
-.container2 > .contact {
+.container2 > .contact { /* styling the "contact" part of place.html which displays relevant information on the restaurant */
     background-color: #fff;
     top: 9vw;
     position: absolute;
@@ -207,47 +211,32 @@ ul > li a:hover {
     right: 1vw;
 }
 
-.container2 > .contact > li {
+.container2 > .contact > li { /* styling the list contents of "contact" */
     text-decoration: none;
     list-style: none;
 }
 
-.container2 > .title {
+.container2 > .title { /* Styling the title of place.html */
     background-color: #fff;
     height: 5vw;
     font-size: 2.5vw;
 }
 
-.container2 > .about {
-    background: none;
-    position: absolute;
-    font-size: 1vw;
-    height: 5vw;
-    width: 50vw;
-    top: 9vw;
-    left: 5vw;
-}
-
-.container2 > .about > p {
-    padding: 0;
-    margin: 0;
-}
-
-.cataloguecontainer{
-    display: grid;
+.cataloguecontainer{ /* styling the container used in the catalogue display of index.html */
+    display: grid; /* display as a grid to separate the filter to the catalogue */
     grid-template-columns: 75vw 25vw;
 }
-.catalogue {
+.catalogue { /* styling the actual catalogue */
     display: grid;
     grid-template-columns: auto auto auto;
     width: 75vw;
     height: 90vh;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: scroll; /* adding the scrollbar to the catalogue */
     font-size: 0.9vw
 }
 
-.card {
+.card { /* styling the individual card */
     border: 2px solid #777;
     border-radius: 5px;
     width: 20vw;
@@ -256,7 +245,7 @@ ul > li a:hover {
     text-align: center;
 }
 
-.imgcontainer {
+.imgcontainer { /* styling the container that the images of each card go in */
     width: 20vw;
     height: 13vw;
     overflow: hidden;
@@ -264,7 +253,7 @@ ul > li a:hover {
 }
 
 
-.card > .imgcontainer > img {
+.card > .imgcontainer > img { /* styling the card's image */
     width: 20.1vw;
     height: 13.1vw;
     position: relative;
@@ -274,21 +263,22 @@ ul > li a:hover {
 }
 
 
-.card > a {
+.card > a { /* styling the card's "View more" button */
     text-decoration:underline;
     color: #777;
     width: 100%;
     text-align: center;
     font-size: 1.25vw;
 }
-.card > a:hover{cursor: pointer;}
-.card > a:hover{
+
+.card > a:hover{/* creating the hover effect on the view more button */
+    cursor: pointer;
     animation-name: shift-arrows;
     animation-duration: 0.4s;
     color: #990000;
     cursor: pointer;
 }
-.card > a:hover:after {
+.card > a:hover:after { /* defining what happens after the user begins hovering on the button */
     position: relative;
     content: "\ >>";
     color:#990000;
@@ -297,7 +287,7 @@ ul > li a:hover {
     left: -8px;
 }
 
-.ratingslider {
+.ratingslider { /* styling the slider found in the filter section of index.html */
     margin-bottom: 1vw;
     -webkit-appearance: none;
     height: 0.5vw;
@@ -308,7 +298,7 @@ ul > li a:hover {
     border-radius: 5px;
 }
 
-.ratingslider::-webkit-slider-thumb {
+.ratingslider::-webkit-slider-thumb { /* styling the part of the slider that the user interacts with */
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -318,6 +308,7 @@ ul > li a:hover {
     border: 2px solid #000;
 }
 
+/* creating an animation to show the arrows sliding from left to right */
 @keyframes add-arrows {
     0% {
         left: -30px;
@@ -328,18 +319,7 @@ ul > li a:hover {
         opacity: 1;
     }
 }
-@keyframes nav-hover-fade {
-    0% {
-        background-color:linen;
-
-    }
-    
-    100% {
-        background-color: #dad0c9;
-    }
-    
-}
-
+/* creating an animation to "wiggle" an element */
 @keyframes wiggle {
     15% {
         transform: rotate(5deg);

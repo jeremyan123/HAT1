@@ -1,16 +1,19 @@
-{% include "menu.html" %}
-{%if view=="catalogue"%}
+{% include "menu.html" %} <!-- getting the navbar from menu.html (same in all pages) -->
+{%if view=="catalogue"%} <!-- getting whether the user wants to see the catalogue or the cuisine selection menu -->
+    <!-- catalogue view -->
     <title>Catalogue</title>
     <div class="cataloguecontainer">
     <div class="catalogue">
+        <!-- iterating through all restaurants in the catalogue and displaying them-->
         {% for i in catalogue %}
-            <div class={{i[2]}} rating={{i[9]}}>
+            <div class={{i[2]}} rating={{i[9]}}> <!-- invisible div used in the filtering system with javascript -->
             <div class="card">
-            <div class="imgcontainer"><img src="static/images/{{images[i[0]][1]}}.png"></div>
-                <p style="text-align: center; font-weight: 600; font-size: 1.25vw; margin: 1vw;">{{i[1]}}</p>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <div class="imgcontainer"><img src="static/images/{{images[i[0]][1]}}.png"></div> <!-- adding the respective image to the card -->
+                <p style="text-align: center; font-weight: 600; font-size: 1.25vw; margin: 1vw;">{{i[1]}}</p> <!-- adding the restaurant name to the card -->
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- google's icon libarary -->
                 <p style="text-align: center;"><i class="material-icons" style="font-size: 1vw; color: orange; text-align: center;">
-                {% if i[9]>=0.5 %}
+                    <!-- displaying the restaurants star-rating (rounded) -->
+                    {% if i[9]>=0.5 %}
                     {% if i[9]>=1.5 %}
                         {% if i[9]>=2.5 %}
                             {% if i[9]>=3.5 %}
@@ -30,32 +33,37 @@
                     {%endif%}   
                 {%endif%}
                 </i></p>
-                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">schedule</i> {{i[6]}}</p>
-                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">location_on</i> {{i[5]}}</p>
-                <a class="viewmore" href="{{url_for('showplace', place_id=i[0])}}">VIEW MORE</a>
+                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">schedule</i> {{i[6]}}</p> <!-- adding the open hours to the card with a google clock icon -->
+                <p style="text-align: center;"><i class="material-icons" style="font-size: 0.8vw; text-align: center; vertical-align: middle;">location_on</i> {{i[5]}}</p> <!-- adding the address to the card with a google pin icon-->
+                <a class="viewmore" href="{{url_for('showplace', place_id=i[0])}}">VIEW MORE</a> <!-- button that redirects to the restaurant's individual page -->
 
             </div>
             </div>
         {%endfor%}
     </div>
+    <!-- the filter part of the catalogue view -->
     <div style="font-size: 2vw; border: 2px solid #777; border-top: none; border-bottom:none; color: #000; text-align: center; padding-top: 2vw;">
         FILTER
         <div style="margin-top: 3vw; text-align: left; margin-left: 4vw;"><p style="font-size: 1.5vw;  margin-bottom: -1.5vw;">CUISINES</p><br>
-            <input type="checkbox" id="check1" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Korean</label><br>
-            <input type="checkbox" id="check2" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Italian</label><br>
-            <input type="checkbox" id="check3" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Chinese</label><br>
-            <input type="checkbox" id="check4" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Thai</label><br>    
+            <!-- checkboxes that are linked to the javascript found in this file using an onclick function -->
+            <input type="checkbox" id="Korean" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Korean</label><br>
+            <input type="checkbox" id="Italian" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Italian</label><br>
+            <input type="checkbox" id="Chinese" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Chinese</label><br>
+            <input type="checkbox" id="Thai" onclick="updatecatalogue()" checked><label style="font-size: 1vw;"> Thai</label><br>    
         </div>
         <div style="margin-top: 3vw; text-align: left; margin-left: 4vw;"><p style="font-size: 1.5vw;  margin-bottom: -1.5vw;">RATING</p><br>
             <!-- inspired by https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816 -->
-            <input type="range" min="0" max="50" value="0" class="ratingslider" id="minrating"><label style="font-size: 1vw" id="minratingtext"> MIN: 0</label>
-            <input type="range" min="0" max="50" value="50" class="ratingslider" id="maxrating"><label style="font-size: 1vw" id="maxratingtext"> MAX: 5</label>
+            <!-- sliders that are linked to javascript -->
+            <input type="range" min="0" max="50" value="0" class="ratingslider" id="minrating"><label style="font-size: 1vw" id="minratingtext"> MIN: 0</label> <!-- displays the value of the slider (updated in javascript) -->
+            <input type="range" min="0" max="50" value="50" class="ratingslider" id="maxrating"><label style="font-size: 1vw" id="maxratingtext"> MAX: 5</label> <!-- same as above -->
     </div>
     </div>
 {%else%}
+<!-- Cuisine selection view -->
     <title>Cuisine Selection</title>
     <p style="width: 100%; text-align: center; font-size: 2.5vw;">CUISINES</p>
     <div class="container">
+        <!-- display the different cuisines with their respective images, and link the buttons to category.html -->
         <div><img src='static/images/Korean.png'><a href="{{url_for('showcategory', category='Korean')}}" class="text">KOREAN</a></div>
         <div><img src='static/images/Italian.png'><a href="{{url_for('showcategory', category='Italian')}}" class="text">ITALIAN</a></div>
         <div><img src='static/images/Chinese.png'><a href="{{url_for('showcategory', category='Chinese')}}" class="text">CHINESE</a></div>
@@ -65,21 +73,25 @@
 
 
 <script>
+    // updating the contents of the catalogue when the minrating slider is changed
     document.getElementById("minrating").oninput = (f=>{
-        document.getElementById("minratingtext").innerHTML=" MIN: " + (document.getElementById("minrating").value/10);
-        [...document.querySelectorAll("[rating]")].forEach(x=>{
-            if (x.getAttribute("rating")>=document.getElementById("minrating").value/10 && x.getAttribute("rating")<=document.getElementById("maxrating").value/10) {
-                x.style.display = "block";
+        document.getElementById("minratingtext").innerHTML=" MIN: " + (document.getElementById("minrating").value/10); //updating the text next to the slider
+        // iterating through every element that contains an attribute "rating"
+        [...document.querySelectorAll("[rating]")].forEach(x=>{ //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+            // checking if the card fulfils the filter's conditions
+            if (x.getAttribute("rating")>=document.getElementById("minrating").value/10 && x.getAttribute("rating")<=document.getElementById("maxrating").value/10 && document.getElementById(x.className).checked) {
+                    x.style.display = "block"; //display the card
             }
             else {
-                x.style.display = "none";
+                x.style.display = "none"; //dont display the card
             }
         })
     })
+    //same as above, but for the maxrating slider and text value
     document.getElementById("maxrating").oninput = (f=>{
         document.getElementById("maxratingtext").innerHTML=" MAX: " + (document.getElementById("maxrating").value/10);
         [...document.querySelectorAll("[rating]")].forEach(y=>{
-            if (y.getAttribute("rating")<=document.getElementById("maxrating").value/10 && y.getAttribute("rating")>=document.getElementById("minrating").value/10) {
+            if (y.getAttribute("rating")<=document.getElementById("maxrating").value/10 && y.getAttribute("rating")>=document.getElementById("minrating").value/10 && document.getElementById(y.className).checked) {
                 y.style.display = "block";
             }
             else {
@@ -88,23 +100,33 @@
         })
     })
     
-
+    // function used when checkboxes are changed
     function updatecatalogue() {
-        if (document.getElementById("check1").checked) {
-            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
-            [...document.getElementsByClassName("Korean")].forEach(i=>  {
-                i.style.display = "block";
+        if (document.getElementById("Korean").checked) { // if the "Korean" checkbox is ticked
+            [...document.getElementsByClassName("Korean")].forEach(i=>  { // iterating through all elements with the class "Korean"
+                // checking if the card meets the filter's restrictions
+                if (i.getAttribute("rating")<=document.getElementById("maxrating").value/10 && i.getAttribute("rating")>=document.getElementById("minrating").value/10) {
+                i.style.display = "block"; // display the card
+            }
+            else {
+                i.style.display = "none"; // dont display the card
+            }
             })
         }
-        else{
+        else{ // if the checkbox becomes unticked, dont display all elements with the class "Korean"
             [...document.getElementsByClassName("Korean")].forEach(i=>  {
                 i.style.display = "none";
             })
         }
-        if (document.getElementById("check2").checked) {
-            //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
+        // ---The rest are the same as above, but with the different cuisine names--- 
+        if (document.getElementById("Italian").checked) {
             [...document.getElementsByClassName("Italian")].forEach(i=>  {
+                if (i.getAttribute("rating")<=document.getElementById("maxrating").value/10 && i.getAttribute("rating")>=document.getElementById("minrating").value/10) {
                 i.style.display = "block";
+            }
+            else {
+                i.style.display = "none";
+            }
             })
         }
         else{
@@ -112,10 +134,15 @@
                 i.style.display = "none";
             })
         }
-        if (document.getElementById("check3").checked) {
+        if (document.getElementById("Chinese").checked) {
             //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
             [...document.getElementsByClassName("Chinese")].forEach(i=>  {
+                if (i.getAttribute("rating")<=document.getElementById("maxrating").value/10 && i.getAttribute("rating")>=document.getElementById("minrating").value/10) {
                 i.style.display = "block";
+            }
+            else {
+                i.style.display = "none";
+            }
             })
         }
         else{
@@ -123,10 +150,15 @@
                 i.style.display = "none";
             })
         }
-        if (document.getElementById("check4").checked) {
+        if (document.getElementById("Thai").checked) {
             //from https://stackoverflow.com/questions/15843581/how-to-correctly-iterate-through-getelementsbyclassname
             [...document.getElementsByClassName("Thai")].forEach(i=>  {
+                if (i.getAttribute("rating")<=document.getElementById("maxrating").value/10 && i.getAttribute("rating")>=document.getElementById("minrating").value/10) {
                 i.style.display = "block";
+            }
+            else {
+                i.style.display = "none";
+            }
             })
         }
         else{

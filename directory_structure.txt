@@ -1,1 +1,90 @@
-placeholder
+HAT1 >
+    database >
+        data.db
+    static >
+        css >
+            style.css
+        images >
+            678-2.png
+            Korean.png
+            china-2.png
+            fortunecard.png
+            garden-2.png
+            joychewcard.png
+            kong-2.png
+            marscard.png
+            posto-2.png
+            spoonful-3.png
+            szecard2.png
+            verace-3.png
+            678-3.png
+            Thai.png
+            china-3.png
+            fortunecard2.png
+            garden-3.png
+            joychewcard2.png
+            kong-3.png
+            marscard2.png
+            posto-3.png
+            spoonfulcard.png
+            ta-2.png
+            veracecard.png
+            678card.png
+            borrellis-2.png
+            chinacard.png
+            galbi-2.png
+            gardencard.png
+            kangnam-2.png
+            kongcard.png
+            monkey-2.png
+            postocard.png
+            spoonfulcard2.png
+            ta-3.png
+            veracecard2.png
+            678card2.png
+            borrellis-3.png
+            chinacard2.png
+            galbi-3.png
+            gardencard2.png
+            kangnam-3.png
+            kongcard2.png
+            monkey-3.png
+            postocard2.png
+            sze-2.png
+            tacard.png
+            Chinese.png
+            borrelliscard.png
+            fortune-2.png
+            galbicard.png
+            joychew-2.png
+            kangnamcard.png
+            mars-2.png
+            monkeycard.png
+            sze-3.png
+            tacard2.png
+            Italian.png
+            borrelliscard2.png
+            fortune-3.png
+            galbicard2.png
+            joychew-3.png
+            kangnamcard2.png
+            mars-3.png
+            monkeycard2.png
+            spoonful-2.png
+            szecard.png
+            verace-2.png
+    tempates >
+        category.html
+        index.html
+        login.html
+        menu.html
+        place.html
+        postplace.html
+        signup.html
+        verification.html
+app.py
+README.md
+--------Assessment files (Not part of the website) --------
+diary.txt
+directory_structure.txt
+sql_commands.txt

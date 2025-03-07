@@ -60,11 +60,18 @@
     transferred previous content of index.html to be rendered when the url argument "view" is given as "category" (given when the user selecets "Cuisines")
     create a page that is rendered when the url argument "view" is given as "catalogue" (given when the user selects "View All")
     Temporarily displayed all rows of the catalogue when view=catalogue
+   analysed app.py with pylint 
+    6.1/10 -> 7.22/10 (removed unused imports and rearranged the order of standard imports)
+    7.22/10 -> 9.23/10 (renamed variables, added function doscstrings)
+    9.23 -> 9.78/10 (added module doscstrings and removed "pointless" statements)
+
 
 5/03/2025
   added "cards" to catalogue, containing the restaurant's information from data.db
   dropped columns "reviews" and "images"
   create tables "reviews" and "images"
+  added a exception type to the function that checks if the user is logged in (for pylint)
+    9.78/10 -> 9.88/10
 
 6/03/2025
   Added images to cards by relating the tables "images" and "catalogue"
@@ -86,3 +93,26 @@
     https://assets.epicurious.com/photos/624d9590857fa7e509238b59/16:9/w_2560%2Cc_limit/RegionalChinese_HERO_033122_31320.jpg
   Added images to restaurant selection page (same images used in catalogue)
   Added "Filter" to the side of catalogue page (no functionallity)
+  Finished adding all restaurants to data.db (images and reviews from google maps)
+  Created filtering system to catalogue using javascript
+    Added a catalogue filtering system using css checkboxes
+    Added a rating filtering system using max and minimum range inputs with css
+
+7/03/2025
+  Fixed users being able to create accounts with null usernames
+  fixed filtering system in catalogue
+  PYLINT
+    9.88/10 -> 8.68/10 (before changes)
+    removed traling whitespaces, 
+    removed unneccesary elif statement and replaced it with "if", 
+    removed unused variables, 
+    replaced some local variables with their raw value, 
+    added docstring to new function,
+    put imports on seperate lines
+    reduced line lengths
+    8.68/10 -> 9.89/10 (after changes)
+  Added comments to: 
+    app.py
+    style.css
+    category.html
+    index.html

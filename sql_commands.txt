@@ -1,0 +1,34 @@
+-----SQL commands used to create the tables found in data.db-----
+
+CREATE TABLE catalogue (
+    place_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    coordx FLOAT NOT NULL,
+    coordy FLOAT NOT NULL,
+    address TEXT NOT NULL,
+    open_hours TEXT NOT NULL,
+    website TEXT NOT NULL,
+    phone_number TEXT NOT NUll,
+    rating FLOAT NOT NULL
+);
+
+CREATE TABLE reviews (
+    review_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    review1 TEXT NOT NULL,
+    review2 TEXT NOT NULL
+);
+
+CREATE TABLE reviews (
+    set_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    image1 TEXT NOT NULL,
+    image2 TEXT NOT NULL,
+    image3 TEXT NOT NULL
+);
+
+CREATE TABLE users (
+    userID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL
+)
