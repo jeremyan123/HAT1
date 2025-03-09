@@ -122,4 +122,9 @@
     postplace.html
     signup.html
     verification.html
+  
+9/03/2025
+  Created final story board 
+  Evaluated website's colour contrast with WCAG colour contrast checker to ensure accessability
+  
     
