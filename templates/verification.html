@@ -1,10 +1,11 @@
 {% include 'menu.html' %}
-<form action="/verification" method = "POST" class="form">
+<form action="/verification" method = "POST" class="form"> <!-- form to be submitted to "/verification" -->
     <p>VERIFY YOUR EMAIL</p>
     <p>Verification Code (Check your email)</p>
     <p><input type = "text" name = "code" class="code" placeholder=""/></p>
-    {% if error %}
+    {% if error %} <!-- if the verification code is wrong, it will display the error message here -->
         <p style="color: #ff0000; text-align: center;">{{error}}</p>
     {%endif%}
+    <!-- form submition button -->
     <p><input type = "submit" value = "VERIFY EMAIL" name="button" class="bt1"/></p>
 </form>

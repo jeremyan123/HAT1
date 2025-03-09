@@ -1,10 +1,11 @@
 {% include 'menu.html' %}
-<title>{{catalogue[0][1]}}</title>
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.js"></script>
-<div class="container2" style="overflow-x: hidden; overflow-y: scroll; max-height: 85.5vh;">
-    <div class="title">{{ catalogue[0][1] }}</div>
+<title>{{catalogue[0][1]}}</title> <!-- setting the page's title to the restaurant's name-->
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css" rel="stylesheet"> <!-- css from the mapbox api (used for the interactive map) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- google icons -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.js"></script> <!-- javascript from the mapbox api -->
+<div class="container2" style="overflow-x: hidden; overflow-y: scroll; max-height: 85.5vh;"> 
+    <div class="title">{{ catalogue[0][1] }}</div> <!-- displaying the restaurant's name -->
+    <!-- displaying the star-rating using "rating" from catalogue in data.db (rounded values) -->
     <p style="font-size: 1.5vw; margin: 0; margin-right: 1vw; margin-left: 1vw; text-align: center;"><i class="material-icons" style="font-size: 1.5vw; color: orange; text-align: center;">
     {% if catalogue[0][9]>=0.5 %}
         {% if catalogue[0][9]>=1.5 %}
@@ -28,11 +29,14 @@
     </i></p>
     
     <div class="contact" style="text-align: left;">
+        <!-- displaying open hours, address, phone number and website links -->
         <li style="font-size: 1vw;"><i class="material-icons" style="font-size: 1vw;">schedule</i> {{catalogue[0][6]}}</li>
         <li style="font-size: 1vw;"><i class="material-icons" style="font-size: 1vw;">location_on</i> {{catalogue[0][5]}}</li>
         <li style="font-size: 1vw;"><i class="material-icons" style="font-size: 1vw;">call</i> {{catalogue[0][8]}}</li>
         <li style="font-size: 1vw;"><i class="material-icons" style="font-size: 1vw;">language</i> <a href="{{catalogue[0][7]}}" style="text-decoration-line: none;">{{catalogue[0][7]}}</a></li>
     </div>
+    <!-- adding photos and reviews to the page -->
+    <!-- grid layout is used to align the images and text -->
     <div style="display: grid; grid-template-columns: 28vw auto; width: 70vw; background-color: #fff; margin-top: 5vw;">
         <div style="width: 25vw; height: 20vw; overflow: hidden; border-radius: 5px; border: 2px solid #777;"><img style="width: 25vw; height: 20vw;"src="static/images/{{images[catalogue[0][0]][2]}}.png"></div>
         <div style="display: flex;height: 20vw; width: 40vw;background-color: #fff; align-items: center; font-size: 1vw;">"{{reviews[0][1]}}"</div>
@@ -41,34 +45,17 @@
         <div style="display: flex;height: 20vw; width: 40vw;background-color: #fff; align-items: center; font-size: 1vw; padding-bottom: 5vw;">"{{reviews[0][2]}}"</div>
         <div style="width: 25vw; height: 20vw; overflow: hidden; border-radius: 5px; border: 2px solid #777;"><img style="width: 25vw; height: 20vw;"src="static/images/{{images[catalogue[0][0]][3]}}.png"></div>
     </div>
-    <div id="map"></div>
+    <div id="map"></div> <!-- integrating the interactive map -->
 </div>
 <body>
 </body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--From https://docs.mapbox.com/mapbox-gl-js/guides (partially)-->
 <script>
-    var place = {{catalogue|tojson}}[0];
-    console.log(place[3]);
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYW1vbmdzdGVyciIsImEiOiJjbTcwYWpsZW0wZWg0MmtwaXYwMGdkdjhxIn0.vCpwTqnsJH7xgwHeANnT0g';
+    var place = {{catalogue|tojson}}[0]; //establishing which restaurant in the database is being displayed
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW1vbmdzdGVyciIsImEiOiJjbTcwYWpsZW0wZWg0MmtwaXYwMGdkdjhxIn0.vCpwTqnsJH7xgwHeANnT0g'; // access token to the mapbox api 
+    // defining the map and its properties including: style, center of display and initial zoom
     const map = new mapboxgl.Map({container: 'map', style: 'mapbox://styles/mapbox/streets-v12', center: [place[3], place[4]], zoom: 11});
+    // adding a "marker" to the map at the restaurant's coordinates (from data.db)
     const marker = new mapboxgl.Marker({ color: 'red'}).setLngLat([place[3], place[4]]).addTo(map);
 </script>

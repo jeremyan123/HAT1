@@ -26,7 +26,6 @@ def post():
             if x[1].lower()==username.lower():
                 # testing if the password matches
                 if x[2]==password:
-                    print(f"User logged in as {username}")
                     # setting a variable in the user's session storage to be used when determining if the user is logged in or not
                     session['logged_in'] = True
                     # check if the account is the defined admin account

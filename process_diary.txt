@@ -111,8 +111,15 @@
     put imports on seperate lines
     reduced line lengths
     8.68/10 -> 9.89/10 (after changes)
-  Added comments to: 
+  Added comments (internal documentation) to: 
     app.py
     style.css
     category.html
     index.html
+    login.html
+    menu.html
+    place.html
+    postplace.html
+    signup.html
+    verification.html
+    

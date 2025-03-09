@@ -1,13 +1,13 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- linking all pages to the css file -->
 <ul>
-    {% if session.admin %}
-        <li> <a href="{{ url_for('postscreen')}}">POST</a></li>
+    {% if session.admin %} <!-- if the user is an admin, display an extra button in the navbar -->
+        <li> <a href="{{ url_for('postscreen')}}">POST</a></li> <!-- button linking to a page where you can post data to the database -->
     {% endif %}
-    {% if session.logged_in %}
+    {% if session.logged_in %} <!-- if the user is logged in, display the buttons: "cuisines", "view all" and "logout" -->
         <li> <a href="{{url_for('home', view='category')}}">CUISINES</a></li>
         <li> <a href="{{url_for('home', view='catalogue')}}">VIEW ALL</a></li>
         <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
-    {% else %}
+    {% else %} <!-- if the user isnt logged in, display the buttons "login" and "signup" -->
         <li> <a href="{{ url_for('login') }}">LOGIN</a></li>
         <li> <a href="{{ url_for('signup') }}">SIGNUP</a></li>
     {%endif%}

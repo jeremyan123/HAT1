@@ -1,7 +1,9 @@
 {% include "menu.html" %}
 <style>body {overflow: scroll;}</style>
+<!-- form used to submit data to data.db -->
 <form action="./postplace" method = "POST" class="form">
     <p>POST PLACE</p>
+    <!-- data to be inserted into catalogue -->
     <p>Name</p>
     <p><input type = "text" name = "name" placeholder=""/></p>
     <p>Category</p>
@@ -20,10 +22,12 @@
     <p><input type = "text" name = "phone_number" placeholder=""/></p>
     <p>Rating</p>
     <p><input type = "text" name = "rating" placeholder=""/></p>
+    <!-- data to be inserted into reviews -->
     <p>Review 1</p>
     <p><input type = "text" name = "review1" placeholder=""/></p>
     <p>Review 2</p>
     <p><input type = "text" name = "review2" placeholder=""/></p>
+    <!-- data to be inserted into images -->
     <p>Image 1</p>
     <p><input type = "text" name = "image1" placeholder=""/></p>
     <p>Image 2</p>
@@ -31,5 +35,5 @@
     <p>Image 3</p>
     <p><input type = "text" name = "image3" placeholder=""/></p>
 
-    <p><input type = "submit" value = "CREATE PLACE" name="button"/></p>
+    <p><input type = "submit" value = "CREATE PLACE" name="button"/></p> <!-- submit button -->
 </form>
